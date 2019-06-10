@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_menu_black_24dp"
+        android:title="@string/title_all_discounts"/>
+
+    <item
+        android:id="@+id/available_discounts"
+        android:icon="@drawable/ic_view_stream_black_24dp"
+        android:title="@string/title_available_discounts"/>
+
+    <item
+        android:id="@+id/saved_cards"
+        android:icon="@drawable/ic_card_membership_black_24dp"
+        android:title="@string/title_saved_cards"/>
+    <item
+        android:id="@+id/saved_discounts"
+        android:icon="@drawable/ic_save_black_24dp"
+        android:title="@string/title_saved_discounts"/>
+
+
+
+</menu>
