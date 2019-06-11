@@ -8,10 +8,74 @@ import android.widget.TextView;
 
 import com.example.lestudis.R;
 import com.example.lestudis.models.DiscountModel;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class DiscountAdapter extends RecyclerView.Adapter<DiscountAdapter.MyViewHolder> {
+import javax.annotation.Nullable;
+
+public class DiscountAdapter extends RecyclerView.Adapter<DiscountAdapter.MyViewHolder>
+implements EventListener<QuerySnapshot> {
     private List<DiscountModel>discountModelListList;
+
+    private ArrayList<DocumentSnapshot> mSnapshots = new ArrayList<>();
+
+    @Override
+    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+        // Handle errors
+        if (e != null) {
+            return;
+        }
+        // Dispatch the event
+        assert queryDocumentSnapshots != null;
+        for (DocumentChange change : queryDocumentSnapshots.getDocumentChanges()) {
+            // Snapshot of the changed document
+            DocumentSnapshot snapshot = change.getDocument();
+
+            switch (change.getType()) {
+                case ADDED:
+                    // TODO: handle document added
+                    break;
+                case MODIFIED:
+                    // TODO: handle document modified
+                    break;
+                case REMOVED:
+                    // TODO: handle document removed
+                    break;
+            }
+        }
+
+       // onDataChanged();
+    }
+
+    protected void onDocumentAdded(DocumentChange change) {
+        mSnapshots.add(change.getNewIndex(), change.getDocument());
+        notifyItemInserted(change.getNewIndex());
+    }
+
+    protected void onDocumentModified(DocumentChange change) {
+        if (change.getOldIndex() == change.getNewIndex()) {
+            // Item changed but remained in same position
+            mSnapshots.set(change.getOldIndex(), change.getDocument());
+            notifyItemChanged(change.getOldIndex());
+        } else {
+            // Item changed and changed position
+            mSnapshots.remove(change.getOldIndex());
+            mSnapshots.add(change.getNewIndex(), change.getDocument());
+            notifyItemMoved(change.getOldIndex(), change.getNewIndex());
+        }
+    }
+
+    protected void onDocumentRemoved(DocumentChange change) {
+        mSnapshots.remove(change.getOldIndex());
+        notifyItemRemoved(change.getOldIndex());
+    }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView img, expdate, id, description;
