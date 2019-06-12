@@ -36,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
+    @Override
+    public void onBackPressed() {
+        return;
+    }
 
     private void loadFragment(Fragment fragment) {
         // load fragment

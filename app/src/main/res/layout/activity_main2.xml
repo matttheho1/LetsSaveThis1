@@ -11,12 +11,14 @@
         android:id="@+id/emailTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_anchorGravity="top|center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,11 +26,13 @@
         android:id="@+id/passwordTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailTxt" />
 
@@ -36,9 +40,10 @@
         android:id="@+id/loginBtn"
         android:layout_width="126dp"
         android:layout_height="70dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
         android:text="Login"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordTxt" />
 
@@ -46,9 +51,10 @@
         android:id="@+id/createAccBtn"
         android:layout_width="179dp"
         android:layout_height="78dp"
-        android:layout_marginStart="116dp"
         android:layout_marginTop="44dp"
+        android:layout_marginEnd="8dp"
         android:text="Create Account"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
 

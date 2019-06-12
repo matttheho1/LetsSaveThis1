@@ -36,26 +36,26 @@ public class AvailableDiscountFragment extends Fragment {
         View viewRoot = inflater.inflate(R.layout.fragment_available_discount, container, false);
         discountRv1 = viewRoot.findViewById(R.id.disccount_rv1);
         discountRv1.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()), LinearLayoutManager.VERTICAL));
-        discountRv1.addOnItemTouchListener(new DiscountTouchListener(getContext(), discountRv1, new DiscountTouchListener.ClickListener() {
+        //discountRv1.addOnItemTouchListener(new DiscountTouchListener(getContext(), discountRv1, new DiscountTouchListener.ClickListener() {
 
-            @Override
-            public void onClick(View view, int position) {
-
-                Intent intent = new Intent(getContext(), Discountactivity.class);
-                intent.putExtra("EXP_DATE_ID", discountModelList1.get(position).getExpdate());
-                intent.putExtra("DETAIL_ID",discountModelList1.get(position).getDescription());
-                intent.putExtra("ID_TEXT_ID",discountModelList1.get(position).getId());
-
-                startActivity(intent);
-
-            }
-        }));
-        mAdapter = new DiscountAdapter(discountModelList1);
-        layoutManager1 = new LinearLayoutManager(getContext());
-        discountRv1.setLayoutManager(layoutManager1);
-        discountRv1.setItemAnimator(new DefaultItemAnimator());
-        discountRv1.setAdapter(mAdapter);
-
+//            @Override
+//            public void onClick(View view, int position) {
+//
+//                Intent intent = new Intent(getContext(), Discountactivity.class);
+//                intent.putExtra("EXP_DATE_ID", discountModelList1.get(position).getExpdate());
+//                intent.putExtra("DETAIL_ID",discountModelList1.get(position).getDescription());
+//                intent.putExtra("ID_TEXT_ID",discountModelList1.get(position).getId());
+//
+//                startActivity(intent);
+//
+//            }
+//        }));
+//        mAdapter = new DiscountAdapter(discountModelList1);
+//        layoutManager1 = new LinearLayoutManager(getContext());
+//        discountRv1.setLayoutManager(layoutManager1);
+//        discountRv1.setItemAnimator(new DefaultItemAnimator());
+//        discountRv1.setAdapter(mAdapter);
+//
 
         // Inflate the layout for this fragment
      //   prepareDiscountData();

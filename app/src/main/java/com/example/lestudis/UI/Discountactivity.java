@@ -26,6 +26,7 @@ public class Discountactivity extends AppCompatActivity {
         TextView idText = findViewById(R.id.id_text);
         ImageView discountImage = findViewById(R.id.imageView);
 
+
         new DownloadImage(discountImage)
                 .execute("https://scontent.fakl2-1.fna.fbcdn.net/v/t1.0-9/51223920_1978968588817601_2225755247966420992_n.jpg?_nc_cat=102&_nc_ht=scontent.fakl2-1.fna&oh=93c80f4132ffdcec28ece1a07151dcb0&oe=5D8491D2");
 

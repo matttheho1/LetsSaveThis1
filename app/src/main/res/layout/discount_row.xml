@@ -51,20 +51,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         tools:text="15/01/2020"/>
 
-    <!--<TextView-->
-        <!--android:id="@+id/id"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:textColor="@color/colorId"-->
-        <!--tools:text="TEM ID"/>-->
-    <!--<TextView-->
-        <!--android:id="@+id/description"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@id/expdate"-->
-        <!--android:textColor="@color/colorId"-->
-        <!--tools:text="TEM DESCRIPTION"/>-->
-
 
 </android.support.constraint.ConstraintLayout>
