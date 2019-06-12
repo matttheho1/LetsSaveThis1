@@ -30,23 +30,13 @@ public abstract class DiscountListFragment extends Fragment {
     //    private DiscountAdapter mAdapter;
     private DatabaseReference mDatabase;
     private FirebaseRecyclerAdapter<DiscountModel, DiscountViewHolder> mAdapter;
-//    private FirebaseFirestore mFirestore;
-//    private Query mQuery;
-//    private List<DiscountModel> discountModelList = new ArrayList<>();
 
     public DiscountListFragment() {
     }
 
-//    private void initFirestore() {
-//        mFirestore = FirebaseFirestore.getInstance();
-//        mQuery = mFirestore.collection("Discount");
-//    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        initFirestore();
         View viewRoot = inflater.inflate(R.layout.fragment_all_discount, container, false);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -54,29 +44,6 @@ public abstract class DiscountListFragment extends Fragment {
         discountRv = viewRoot.findViewById(R.id.disccount_rv);
         discountRv.setHasFixedSize(true);
         discountRv.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()), LinearLayoutManager.VERTICAL));
-//        discountRv.addOnItemTouchListener(new DiscountTouchListener(getContext(), discountRv, new DiscountTouchListener.ClickListener() {
-//            @Override
-//            public void onClick(View view, int position) {
-//                Intent intent = new Intent(getContext(), Discountactivity.class);
-//                intent.putExtra("EXP_DATE_ID", discountModelList.get(position).getExpdate());
-//                intent.putExtra("DETAIL_ID",discountModelList.get(position).getDescription());
-//                intent.putExtra("ID_TEXT_ID",discountModelList.get(position).getId());
-//
-//                startActivity(intent);
-//
-//            }
-//
-//        }));
-
-//        mAdapter = new DiscountAdapter(discountModelList);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-//        discountRv.setLayoutManager(layoutManager);
-//        discountRv.setItemAnimator(new DefaultItemAnimator());
-//        discountRv.setAdapter(mAdapter);
-//
-//
-//        // Inflate the layout for this fragment
-//        prepareDiscountData();
         return viewRoot;
     }
 
@@ -141,16 +108,6 @@ public abstract class DiscountListFragment extends Fragment {
             mAdapter.stopListening();
         }
     }
-    //
-//    private void prepareDiscountData() {
-//        DiscountModel discount = new DiscountModel("img","expdate","id","description");
-//        discountModelList.add(discount);
-//
-//        discount = new DiscountModel("test","test","test","test");
-//        discountModelList.add(discount);
-//
-//        mAdapter.notifyDataSetChanged();
-//    }
 
     public String getUid() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();

@@ -6,15 +6,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DiscountModel {
-    private String img, expdate, id, description;
+    private String img, expdate, id, description, scheme, title, offer;
 
     public DiscountModel() {
     }
-        public DiscountModel(String img, String expdate, String id, String description) {
+        public DiscountModel(String img, String expdate, String id, String description, String scheme, String title, String offer) {
             this.img = img;
             this.expdate = expdate;
             this.id = id;
             this.description= description;
+            this.scheme = scheme;
+            this.title = title;
+            this.offer = offer;
         }
 
         public String getImg() {
@@ -49,6 +52,18 @@ public class DiscountModel {
             this.description = description;
         }
 
+        public String getScheme(){ return scheme;}
+
+        public void setScheme(String scheme){this.scheme = scheme;}
+
+        public String getTitle(){return title;}
+
+        public void setTitle(String title){this.title = title;}
+
+        public String getOffer(){return this.offer;}
+
+        public void setOffer(String offer){this.offer = offer;}
+
     // [START post_to_map]
     @Exclude
     public Map<String, Object> toMap() {
@@ -57,6 +72,9 @@ public class DiscountModel {
         result.put("expdate", expdate);
         result.put("id", id);
         result.put("description", description);
+        result.put("scheme",scheme);
+        result.put("title",title);
+        result.put("offer",offer);
 
         return result;
     }

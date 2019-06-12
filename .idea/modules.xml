@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LeStuDis.iml" filepath="$PROJECT_DIR$/LeStuDis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LetsSaveThis1.iml" filepath="$PROJECT_DIR$/LetsSaveThis1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LetsSaveThis1-LoginAuth.iml" filepath="$PROJECT_DIR$/LetsSaveThis1-LoginAuth.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

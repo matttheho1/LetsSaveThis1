@@ -58,16 +58,16 @@ public class AvailableDiscountFragment extends Fragment {
 
 
         // Inflate the layout for this fragment
-        prepareDiscountData();
+     //   prepareDiscountData();
         return viewRoot;
     }
 
-    private void prepareDiscountData() {
-        DiscountModel discount = new DiscountModel("img1","expdate1","id1","description1");
-        discountModelList1.add(discount);
-
-        mAdapter.notifyDataSetChanged();
-    }
+//    private void prepareDiscountData() {
+//        DiscountModel discount = new DiscountModel("img1","expdate1","id1","description1");
+//        discountModelList1.add(discount);
+//
+//        mAdapter.notifyDataSetChanged();
+//    }
 
 
 }

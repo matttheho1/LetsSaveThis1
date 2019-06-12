@@ -1,9 +1,12 @@
 package com.example.lestudis.UI;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,9 +16,16 @@ import android.view.ViewGroup;
 
 import com.example.lestudis.R;
 import com.example.lestudis.models.CardModel;
+import com.example.lestudis.models.DiscountModel;
+import com.example.lestudis.viewholder.CardViewHolder;
+import com.example.lestudis.viewholder.DiscountViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -24,50 +34,80 @@ import java.util.Objects;
  */
 public class SavedCardFragment extends Fragment {
     private RecyclerView cardRv;
-    private CardAdapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager3;
-    private List<CardModel> cardModelList = new ArrayList<>();
-
+    private LinearLayoutManager mManager;
+    //    private DiscountAdapter mAdapter;
+    private DatabaseReference mDatabase;
+    private FirebaseRecyclerAdapter<CardModel, CardViewHolder> mAdapter;
 
     public SavedCardFragment() {
-        // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View viewRoot = inflater.inflate(R.layout.fragment_saved_card, container, false);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
         cardRv = viewRoot.findViewById(R.id.card_rv);
+        cardRv.setHasFixedSize(true);
         cardRv.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()), LinearLayoutManager.VERTICAL));
-
-
-        mAdapter = new CardAdapter(cardModelList);
-        layoutManager3 = new LinearLayoutManager(getContext());
-        cardRv.setLayoutManager(layoutManager3);
-        cardRv.setItemAnimator(new DefaultItemAnimator());
-        cardRv.setAdapter(mAdapter);
-
-        prepareCardData();
         return viewRoot;
     }
 
-    private void prepareCardData() {
-        cardModelList.add(new CardModel("cardimg", "cardexpdate", "cardid", "carddescription"));
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mManager = new LinearLayoutManager(getActivity());
+        mManager.setReverseLayout(true);
+        mManager.setStackFromEnd(true);
+        cardRv.setLayoutManager(mManager);
 
-        cardModelList.add(new CardModel("test","test","test","test"));
-        cardModelList.add(new CardModel("test","test","test","test"));
-        cardModelList.add(new CardModel("test","test","test","test"));
-        cardModelList.add(new CardModel("test","test","test","test"));
-        cardModelList.add(new CardModel("test","test","test","test"));
-        cardModelList.add(new CardModel("test","test","test","test"));
-        cardModelList.add(new CardModel("test","test","test","test"));
-        cardModelList.add(new CardModel("test","test","test","test"));
-        cardModelList.add(new CardModel("test","test","test","test"));
-        cardModelList.add(new CardModel("test","test","test","test"));
+        //Set up firebase recycler adapter with the query
+        Query cardQuery = getQuery(mDatabase);
 
-        mAdapter.notifyDataSetChanged();
+        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<CardModel>()
+                .setQuery(cardQuery, CardModel.class)
+                .build();
+
+        mAdapter = new FirebaseRecyclerAdapter<CardModel, CardViewHolder>(options) {
+
+            @Override
+            public CardViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+                LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
+                return new CardViewHolder(inflater.inflate(R.layout.card_row, viewGroup, false));
+            }
+
+            @Override
+            protected void onBindViewHolder(CardViewHolder viewHolder, int position, @NonNull CardModel model) {
+                viewHolder.bindToPost(model);
+
+            }
+        };
+        cardRv.setAdapter(mAdapter);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (mAdapter != null) {
+            mAdapter.startListening();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAdapter != null) {
+            mAdapter.stopListening();
+        }
+    }
+
+    public String getUid() {
+        return FirebaseAuth.getInstance().getCurrentUser().getUid();
+    }
+
+    public Query getQuery(DatabaseReference databaseReference){
+        return databaseReference.child("user-cards");
+    }
 }
