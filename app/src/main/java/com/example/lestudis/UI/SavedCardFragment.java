@@ -37,6 +37,8 @@ public class SavedCardFragment extends Fragment {
     private DatabaseReference mDatabase;
     private FirebaseRecyclerAdapter<CardModel, CardViewHolder> mAdapter;
 
+
+
     public SavedCardFragment() {
     }
 
@@ -52,6 +54,7 @@ public class SavedCardFragment extends Fragment {
         cardRv.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()), LinearLayoutManager.VERTICAL));
 
         Button addCardBtn = viewRoot.findViewById(R.id.add_card_btn);
+
         addCardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +72,8 @@ public class SavedCardFragment extends Fragment {
         mManager.setReverseLayout(true);
         mManager.setStackFromEnd(true);
         cardRv.setLayoutManager(mManager);
+
+
 
         //Set up firebase recycler adapter with the query
         Query cardQuery = getQuery(mDatabase);

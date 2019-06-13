@@ -28,6 +28,7 @@ public class LandingActivity extends AppCompatActivity {
     private EditText mPasswordField;
     private Button mCreateAccount;
     private Button mLogin;
+    private Button mGuest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class LandingActivity extends AppCompatActivity {
         mPasswordField = findViewById(R.id.passwordTxt);
         mCreateAccount = findViewById(R.id.createAccBtn);
         mLogin = findViewById(R.id.loginBtn);
+        mGuest = findViewById(R.id.guestBtn);
 
         mCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +90,14 @@ public class LandingActivity extends AppCompatActivity {
                                 }
                             }
                         });
+            }
+        });
+
+        mGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LandingActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
