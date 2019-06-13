@@ -4,7 +4,13 @@
     <string name="title_available_discounts">Available Discounts</string>
     <string name="title_saved_cards">Discount Cards</string>
     <string name="title_saved_discounts">Saved Discounts</string>
+    <string-array name="cards">
+        <item>ISIC</item>
+        <item>Niesh</item>
+        <item>StudentCard</item>
+        <item>Unidays</item>
+    </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="delete_txt">Delete</string>
+    <string name="save_txt">Save</string>
 </resources>
