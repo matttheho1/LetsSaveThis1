@@ -7,10 +7,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.lestudis.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
+
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -30,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.saved_cards:
                     loadFragment(new SavedCardFragment());
                     return true;
+
             }
             return false;
         }
