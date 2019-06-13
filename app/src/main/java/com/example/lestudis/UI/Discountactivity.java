@@ -24,15 +24,21 @@ public class Discountactivity extends AppCompatActivity {
         TextView expDateText  = findViewById(R.id.expdate_text);
         TextView detailText = findViewById(R.id.details_text);
         TextView idText = findViewById(R.id.id_text);
+        TextView titleText = findViewById(R.id.txtTitle);
+        TextView offerText = findViewById(R.id.txtOffer);
+        TextView schemeText = findViewById(R.id.txtScheme);
         ImageView discountImage = findViewById(R.id.imageView);
 
 
         new DownloadImage(discountImage)
-                .execute("https://scontent.fakl2-1.fna.fbcdn.net/v/t1.0-9/51223920_1978968588817601_2225755247966420992_n.jpg?_nc_cat=102&_nc_ht=scontent.fakl2-1.fna&oh=93c80f4132ffdcec28ece1a07151dcb0&oe=5D8491D2");
+                .execute(getIntent().getStringExtra("IMG_ID"));
 
         expDateText.setText(getIntent().getStringExtra("EXP_DATE_ID"));
         detailText.setText(getIntent().getStringExtra("DETAIL_ID"));
         idText.setText(getIntent().getStringExtra("ID_TEXT_ID"));
+        titleText.setText(getIntent().getStringExtra("TITLE_ID"));
+        offerText.setText(getIntent().getStringExtra("OFFER_ID"));
+        schemeText.setText(getIntent().getStringExtra("SCHEME_ID"));
 
         Button saveBtn = findViewById(R.id.save_btn);
         saveBtn.setOnClickListener(new View.OnClickListener() {

@@ -71,16 +71,21 @@ public abstract class DiscountListFragment extends Fragment {
             }
 
             @Override
-            protected void onBindViewHolder(DiscountViewHolder viewHolder, int position, @NonNull DiscountModel model) {
+            protected void onBindViewHolder(DiscountViewHolder viewHolder, int position, @NonNull final DiscountModel model) {
 
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getContext(), Discountactivity.class);
-//                        intent.putExtra("EXP_DATE_ID", discountModelList.get(position).getExpdate());
-//                        intent.putExtra("DETAIL_ID",discountModelList.get(position).getDescription());
-//                        intent.putExtra("ID_TEXT_ID",discountModelList.get(position).getId());
+                        DiscountModel passModel = model;
+                        intent.putExtra("EXP_DATE_ID", passModel.getExpdate());
+                        intent.putExtra("DETAIL_ID", passModel.getDescription());
+                        intent.putExtra("ID_TEXT_ID", passModel.getId());
+                        intent.putExtra("IMG_ID", passModel.getImg());
+                        intent.putExtra("TITLE_ID", passModel.getTitle());
+                        intent.putExtra("SCHEME_ID", passModel.getScheme());
+                        intent.putExtra("OFFER_ID", passModel.getOffer());
 
                         startActivity(intent);
                     }
