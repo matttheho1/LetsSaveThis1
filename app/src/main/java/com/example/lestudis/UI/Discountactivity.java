@@ -141,6 +141,7 @@ public class Discountactivity extends AppCompatActivity {
         childUpdates.put("/user-discounts/" + getUid() + "/" + key, discountValues);
         mDatabase.updateChildren(childUpdates);
         saveBtn.setText(getResources().getString(R.string.delete_txt));
+        saveMode = false;
     }
 
     private void deleteDiscount(){

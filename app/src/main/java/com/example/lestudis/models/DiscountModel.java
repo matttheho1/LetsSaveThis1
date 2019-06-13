@@ -79,6 +79,23 @@ public class DiscountModel {
         return result;
     }
 
+    @Override
+    public boolean equals(Object o){
+        if(this == o){
+            return true;
+        }
+        if(o==null || getClass() != o.getClass()){
+            return false;
+        }
+
+        DiscountModel discount = (DiscountModel)o;
+        return discount.getImg().equals(img) &&
+                discount.getExpdate().equals(expdate) &&
+                discount.getDescription().equals(description) &&
+                discount.getScheme().equals(scheme) &&
+                discount.getTitle().equals(title) &&
+                discount.getOffer().equals(offer);
+    }
 }
 
 

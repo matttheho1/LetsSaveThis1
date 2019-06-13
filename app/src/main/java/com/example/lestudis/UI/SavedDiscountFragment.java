@@ -34,7 +34,7 @@ public class SavedDiscountFragment extends AllDiscountFragment {
 
     @Override
     public Query getQuery(DatabaseReference databaseReference){
-        return databaseReference.child("saved-discounts")
+        return databaseReference.child("user-discounts")
                 .child(getUid());
     }
 
