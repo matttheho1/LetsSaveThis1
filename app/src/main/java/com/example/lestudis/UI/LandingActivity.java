@@ -34,6 +34,10 @@ public class LandingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        if(mDatabase==null) {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+            mDatabase = FirebaseDatabase.getInstance().getReference();
+        }
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
